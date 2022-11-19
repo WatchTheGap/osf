@@ -1,0 +1,31 @@
+@import 'src/_variables.scss';
+
+.bg {
+  height: auto;
+  width: auto;
+  background-image: url('/assets/photos/sale_bg1.jpeg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top;
+}
+
+.vendor-deco {
+  height: 34px;
+  width: 137px;
+  margin-top: 2rem;
+}
+
+.title-text {
+  padding: 2rem 0;
+  h1 {
+    color: white;
+    text-align: center;
+    font-size: 26px;
+  }
+
+  p {
+    color: white;
+    text-align: center;
+    font-size: 14px;
+  }
+}

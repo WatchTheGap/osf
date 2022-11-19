@@ -1,0 +1,32 @@
+@import 'src/_variables.scss';
+
+.bg {
+  height: auto;
+  width: auto;
+  background-image: url('/assets/photos/home_bg1.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top left;
+}
+
+.main-logo {
+  margin-top: 2rem;
+  width: 164px;
+  height: 164px;
+}
+
+
+.title-text {
+
+  h1 {
+    color: white;
+    text-align: center;
+    font-size: 32px;
+  }
+  p {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+  }
+}
+

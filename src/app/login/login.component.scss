@@ -1,0 +1,19 @@
+@import 'src/_variables.scss';
+
+
+.bg {
+  height: auto;
+  width: auto;
+  background-image: url('/assets/photos/vendor_bg1.jpeg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top;
+}
+.title-text {
+  padding: 2rem 0;
+  h1 {
+    color: white;
+    text-align: center;
+    font-size: 26px;
+  }
+}

@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+  <div class="col">
+  <form [formGroup]="FormData" (ngSubmit)="onSubmit(FormData.value)">
+
+    <div class="row g-2">
+      <div class="form-group col-6">
+        <input type="text" class="form-control" name="firstname" placeholder="First Name" formControlName="firstname">
+      </div>
+      <div class="form-group col-6">
+        <input type="text" class="form-control" name="lastname" placeholder="Last Name" formControlName="lastname">
+      </div>
+      <div class="form-group col-6">
+        <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Email"formControlName="email">
+      </div>
+      <div class="form-group col-6">
+        <input type="text" class="form-control" name="phone" placeholder="Phone"formControlName="phone">
+      </div>
+
+
+    <div class="form-group col-12">
+      <textarea class="form-control" formControlName="message" name="message" placeholder="Message"></textarea>
+    </div>
+    <button type="submit" class="btn col-3" [disabled]="!FormData.valid">Submit</button>
+  </div>
+
+  </form>
+  </div>
+  </div>
+</div>

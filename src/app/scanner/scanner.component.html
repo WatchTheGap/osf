@@ -1,0 +1,16 @@
+<div class=" scanner-wrapper">
+
+  <div class="has-nav scanner-header">
+    <a href="/vendor" class="nav-link"></a>
+
+  </div>
+  <div class="scanner-body">
+    <zxing-scanner  #scanner (scanSuccess)="scanSuccessHandler($event)"></zxing-scanner>
+
+  </div>
+  <div class="scanner-footer p-4">
+    <button (click)="enableScanner()" type="button" class="btn col-12">Scan QR Code</button>
+
+  </div>
+
+</div>

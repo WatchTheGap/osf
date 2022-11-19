@@ -1,0 +1,19 @@
+@import 'src/_variables.scss';
+
+.footer {
+  background-color: $brand4;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  h1 {
+    font-weight: 200;
+    font-size: 26px;
+    color: $brand2;
+    text-align: center;
+  }
+  p {
+    font-size: 14px;
+    text-align: center;
+    color: $brand2;
+  }
+
+}

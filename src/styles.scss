@@ -1,1 +1,60 @@
-/* You can add global styles to this file, and also import other style files */
+@import '_variables.scss';
+
+@font-face {
+  font-family: 'Trickster';
+  src: url('assets/fonts/Trickster.otf') format('opentype'),
+       url('assets/fonts/Trickster.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FuturaLight';
+  src: url('assets/fonts/Futura_Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FuturaMedium';
+  src: url('assets/fonts/Futura_Medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FuturaHeavy';
+  src: url('assets/fonts/Futura_Heavy.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html, body {
+  background-color: black;
+}
+
+h1 {
+  font-family: 'Trickster', 'FuturaMedium';
+}
+
+h2, h3, h4, h5, h6, p, label, label.placeholder, .btn {
+  font-family: 'FuturaLight';
+}
+
+.has-nav {
+  position: relative;
+  a::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    vertical-align: -.125em;
+    background-image: url('/assets/chevron-left.svg');
+    background-repeat: no-repeat;
+    background-size: 1.25rem 1.25rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    filter:invert(1);
+    left: 1rem;
+    top: 1rem;
+  }
+}

@@ -1,0 +1,23 @@
+@import 'src/_variables.scss';
+
+.scanner-wrapper {
+  background-color: black;
+
+  .scanner-header {
+    min-height: 10vh;
+  }
+
+  .scanner-body {
+    min-height: 50vh;
+  }
+  .scanner-footer {
+    min-height: 40vh;
+    display: flex;
+    align-items: center;
+    .btn {
+      background-color: white;
+      color: black;
+      padding: 1rem;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+.bg {
+  height: auto;
+  width: auto;
+  background-image: url('/assets/photos/create_bg1.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top -120px right;
+}
+
+.bg::after {
+
+}
+
+.title-text {
+  padding: 2rem 0;
+  h1 {
+    color: white;
+    text-align: center;
+    font-size: 26px;
+  }
+  p {
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    padding: 0 2rem;
+    max-width: 350px;
+    margin: auto;
+  }
+}

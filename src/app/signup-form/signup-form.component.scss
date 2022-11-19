@@ -1,0 +1,42 @@
+@import 'src/_variables.scss';
+
+.form-body {
+  background:white;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 4px 6px rgba($color: #000000, $alpha: 0.25);
+
+  .btn {
+    background-color: $brand1;
+    color: white;
+    padding: 1rem;
+  }
+
+  a {
+    color: $black;
+  }
+  .form-group, .input-group {
+    border-bottom: 1px solid $black;
+    margin-bottom: 2rem;
+  }
+
+  .form-check {
+    margin-bottom: 2rem;
+    label {
+      color: $black;
+    }
+  }
+
+  .form-check-input:checked {
+    background-color: white;
+    border-color: black;
+  }
+
+  .form-check-input:checked[type=checkbox] {
+    background-image: url('/assets/check2.svg');
+ }
+
+  .form-control {
+    border-radius: 0;
+    border: 0;
+  }
+}
