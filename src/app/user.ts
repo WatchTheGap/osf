@@ -1,18 +1,16 @@
 export class User {
-  firstName: string;
-  lastName: string;
+  fullname: string;
   email: string;
   phone: number;
-  birthdate: Date;
+  dob: Date;
   instagram: string;
 
-  constructor(firstName: string, lastName: string, email: string,
-              phone: number, birthdate: Date, instagram: string) {
-    this.firstName = firstName;
-    this.lastName = lastName;
+  constructor(fullname: string, email: string,
+              phone: number, dob: Date, instagram: string) {
+    this.fullname = fullname;
     this.email = email;
     this.phone = phone;
-    this.birthdate = birthdate;
+    this.dob = dob;
     this.instagram = instagram;
   }
 }
