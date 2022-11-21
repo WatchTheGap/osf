@@ -10,6 +10,11 @@
 
     <h2>Artists & Vendors</h2>
 
+    <div *ngFor="let vendor of vendors">
+      <app-vendor-detail [vendor]="vendor"></app-vendor-detail>
+    </div>
+
+
   </div>
   <div class="event-footer">
     <h2>Location Name</h2>
