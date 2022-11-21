@@ -26,6 +26,8 @@ import { ScannerComponent } from './scanner/scanner.component';
 import { AddSaleComponent } from './add-sale/add-sale.component';
 import { AddSaleFormComponent } from './add-sale-form/add-sale-form.component';
 import { QRCodeModule } from 'angularx-qrcode';
+import { EventComponent } from './event/event.component';
+import { VendorListComponent } from './vendor-list/vendor-list.component';
 
 
 @NgModule({
@@ -46,7 +48,9 @@ import { QRCodeModule } from 'angularx-qrcode';
     SalesListComponent,
     ScannerComponent,
     AddSaleComponent,
-    AddSaleFormComponent
+    AddSaleFormComponent,
+    EventComponent,
+    VendorListComponent
     ],
   imports: [
     BrowserModule,
