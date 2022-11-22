@@ -27,4 +27,22 @@
     font-size: 20px;
     font-weight: 600;
   }
+
+  .event-header, .event-footer {
+    padding: 4rem 0;
+  }
+
+  .event-body {
+    h2 {
+      margin-bottom: 2rem;
+    }
+  }
+
+  .venue-map {
+    background-image: url('/assets/UpperLarimerMap2.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 200px;
+  }
 }

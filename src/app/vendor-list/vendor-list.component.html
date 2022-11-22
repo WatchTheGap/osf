@@ -10,17 +10,19 @@
 
     <h2>Artists & Vendors</h2>
 
-    <div *ngFor="let vendor of vendors">
+    <div class="row">
+    <div *ngFor="let vendor of vendors" class="col-4">
       <app-vendor-detail [vendor]="vendor"></app-vendor-detail>
     </div>
+  </div>
 
 
   </div>
   <div class="event-footer">
-    <h2>Location Name</h2>
-    <h3>event address</h3>
-    <h3>event address</h3>
-    <img src="http://www.fillmurray.com/300/200" alt="map">
+    <h2>Upper Larimer</h2>
+    <h3>3034 Larimer St</h3>
+    <h3>Denver, CO 80205</h3>
+    <div class="venue-map"></div>
   </div>
 
 </div>

@@ -36,6 +36,9 @@ yarn-error.log
 /libpeerconnection.log
 testem.log
 /typings
+src/assets/photos/vendor_originals
+src/assets/photos/originals
+src/assets/UpperLarimerMap1.png
 
 # System files
 .DS_Store

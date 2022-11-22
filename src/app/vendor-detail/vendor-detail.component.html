@@ -1,4 +1,5 @@
-<img src="{{vendor?.thumbnail}}" alt="">
-<p>{{vendor?.fullname}}</p>
-<p>{{vendor?.instagram}}</p>
+<img src="{{vendor?.thumbnail}}" alt="" class="thumbnail">
+<h4>{{vendor?.fullname}}</h4>
+<h5 [ngClass]="{'reduce1' : vendor?.instagram.length > 13, 'reduce2' : vendor?.instagram.length > 15}">{{vendor?.instagram}}</h5>
+
 <p>{{vendor?.desc}}</p>

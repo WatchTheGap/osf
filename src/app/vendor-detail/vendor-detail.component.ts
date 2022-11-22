@@ -9,7 +9,7 @@ import { Vendor } from '../vendor';
 export class VendorDetailComponent implements OnInit {
 
 
-  @Input() vendor: Vendor | undefined;
+  @Input() vendor: any;
 
   constructor() { }
 
