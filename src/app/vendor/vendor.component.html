@@ -7,10 +7,10 @@
         <img src="/assets/fish_scales_white_line_graphic.png" alt="decorative element" class="vendor-deco">
       </div>
       <!-- TODO: add {{name}} -->
-      <h1>Vendor Name</h1>
+      <h1>{{vendor?.fullname}}</h1>
     </div>
   </div>
 
-  <app-dashboard></app-dashboard>
+  <app-dashboard [vendor]="vendor"></app-dashboard>
 
 </div>

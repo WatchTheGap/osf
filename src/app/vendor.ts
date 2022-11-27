@@ -1,4 +1,5 @@
 export class Vendor {
+  id: number;
   fullname: string;
   email: string;
   instagram: string;
@@ -8,7 +9,8 @@ export class Vendor {
   phone: string;
   shopname: string;
 
-  constructor(fullname: string,
+  constructor(id: number,
+    fullname: string,
               email: string,
               instagram: string,
               thumbnail: string,
@@ -16,6 +18,7 @@ export class Vendor {
               password: string,
               phone: string,
               shopname: string) {
+    this.id = id;
     this.fullname = fullname;
     this.email = email;
     this.instagram = instagram;

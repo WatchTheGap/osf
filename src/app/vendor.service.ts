@@ -15,4 +15,14 @@ export class VendorService {
     let vendorUrl = environment.baseUrl + "/vendors";
     return this.http.get<Vendor[]>(vendorUrl);
   }
+
+  verifyVendor(email:any, password:any): Observable<Vendor> {
+    let vendorUrl = environment.baseUrl + "/vendors?email=" + email + "&password=" + password;
+    return this.http.get<Vendor>(vendorUrl);
+  }
+
+  getVendor(id:any): Observable<Vendor> {
+    let vendorUrl = environment.baseUrl + "/vendors/" + id;
+    return this.http.get<Vendor>(vendorUrl);
+  }
 }

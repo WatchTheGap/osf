@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { User } from '../user';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-add-sale',
@@ -7,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddSaleComponent implements OnInit {
 
-  constructor() { }
+  user: any;
 
-  ngOnInit(): void {
-  }
+  user_id: any;
+  vendor_id: any;
 
+  constructor( private userService: UserService, private route: ActivatedRoute) { }
+
+  ngOnInit() {
+    this.user_id = this.route.snapshot.paramMap.get('user_id');
+    this.vendor_id = this.route.snapshot.paramMap.get('vendor_id');
+    this.userService.getUserByID(this.user_id).subscribe(user => {this.user = user});
+
+    console.log('id1 ', this.user_id)
+    console.log('id2 ', this.vendor_id)
+
+ };
 }
+
+

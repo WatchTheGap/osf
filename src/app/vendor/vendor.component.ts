@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Vendor } from '../vendor';
+import { VendorService } from '../vendor.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-vendor',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VendorComponent implements OnInit {
 
-  constructor() { }
+vendor: Vendor | undefined;
 
-  ngOnInit(): void {
-  }
+  constructor(public vendorService:VendorService,private route: ActivatedRoute,
+    ) { }
 
+    ngOnInit() {
+      this.route.params.subscribe(params => {
+      const id = +params['id'];
+      console.log(id);
+      this.vendorService.getVendor(id).subscribe(
+        vendor => {
+          this.vendor = vendor;
+          console.log("vendor component " + vendor)
+        }
+      );;
+   });
+ }
 }

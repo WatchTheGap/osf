@@ -14,9 +14,9 @@ const routes: Routes = [
   { path: 'create', component: CreateComponent},
   { path: 'event', component: EventComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'vendor', component: VendorComponent},
-  { path: 'addsale', component: AddSaleComponent},
-  { path: 'scanner', component: ScannerComponent},
+  { path: 'vendor/:id', component: VendorComponent},
+  { path: 'vendor/:vendor_id/addsale/:user_id', component: AddSaleComponent},
+  { path: 'scanner/:id', component: ScannerComponent},
 
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 
