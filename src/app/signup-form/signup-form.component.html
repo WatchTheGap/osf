@@ -14,9 +14,9 @@
       <input type="text" class="form-control" name="phone" placeholder="Phone Number" formControlName="phone">
     </div>
 
-    <div class="input-group" (click)="d.toggle()" >
+    <div class="input-group" (click)="d.open()">
 
-      <!-- TODO: 'toggle' is wrong, closes calendar on each click -->
+      <!-- TODO: 'toggle' is wrong, closes calendar on each click (click)="d.toggle()-->
 			<input
 				class="form-control"
 				placeholder="Date of Birth"
@@ -24,6 +24,8 @@
         formControlName="dob"
 				ngbDatepicker
 				#d="ngbDatepicker"
+        [minDate]="{year: 1900, month:1, day: 1}"
+        [maxDate]="{year: 2038, month:1, day: 19}"
 			/>
 		</div>
 
@@ -36,7 +38,6 @@
       <label class="form-check-label" for="terms">
         I agree to the <a href="/terms">terms & conditions</a>
       </label>
-      <!-- TODO: Change this to a modal -->
     </div>
     <button type="submit" class="btn col-12" [disabled]="!SignupFormData.valid" data-bs-toggle="modal" data-bs-target="#success">Create account</button>
 

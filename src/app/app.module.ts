@@ -29,6 +29,7 @@ import { EventComponent } from './event/event.component';
 import { VendorListComponent } from './vendor-list/vendor-list.component';
 import { VendorDetailComponent } from './vendor-detail/vendor-detail.component';
 import * as bootstrap from "bootstrap";
+import { SumPipe } from './sum.pipe';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import * as bootstrap from "bootstrap";
     AddSaleFormComponent,
     EventComponent,
     VendorListComponent,
-    VendorDetailComponent
+    VendorDetailComponent,
+    SumPipe
     ],
   imports: [
     BrowserModule,
@@ -63,6 +65,10 @@ import * as bootstrap from "bootstrap";
     HttpClientModule,
     ZXingScannerModule
     ],
+    exports: [
+      SumPipe
+    ],
+
   providers: [
     ContactService
   ],

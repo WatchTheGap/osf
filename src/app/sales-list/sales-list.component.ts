@@ -14,13 +14,14 @@ export class SalesListComponent implements OnInit {
 
   sales: Sale[] = []
 
+  total: number = 0;
+
   constructor(private saleService: SaleService) { }
 
   getSalesByVendor(id:any) {
     this.saleService.getSalesByVendor(id).subscribe(
       sales => {
         this.sales = sales;
-        console.log(sales)
       }
     )
   }

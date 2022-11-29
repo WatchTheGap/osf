@@ -16,6 +16,7 @@ export class SignupFormComponent implements OnInit {
     this.SignupFormData = this.builder.group({
       fullname: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
+      //add Validators.pattern(/\/\/putRegexInHere/\/\/)
       //validators for phone
       phone: new FormControl('', [Validators.required]),
       dob: new FormControl('', [Validators.required]),
@@ -46,8 +47,8 @@ const myObserver = {
     }
 
 
-
    onSubmit(data: any) {
+    data.dob = new Date(data.dob.year, data.dob.month-1, data.dob.day);
     this.addUser(data);
    }
 
