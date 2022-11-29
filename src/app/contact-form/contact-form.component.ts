@@ -29,9 +29,8 @@ export class ContactFormComponent implements OnInit {
 
     console.log("Wheeeee!)", stuff)
 
-    console.log(FormData)
 
-    this.contact.ContactUs(FormData)
+    this.contact.ContactUs(stuff)
 
   }
 

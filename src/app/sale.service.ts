@@ -14,7 +14,12 @@ export class SaleService {
   constructor(private http: HttpClient) { }
 
   addSale( sale:Sale ): Observable<Sale> {
-    const addSaleUrl = environment.baseUrl + "sales";
+    const addSaleUrl = environment.baseUrl + '/sales';
      return this.http.post<Sale>(addSaleUrl, sale);
+   }
+
+   getSalesByVendor(id: any): Observable<Sale[]> {
+    const getSalesUrl = environment.baseUrl + '/sales?vendor_id=' + id;
+     return this.http.get<Sale[]>(getSalesUrl);
    }
 }

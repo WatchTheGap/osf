@@ -9,19 +9,20 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr *ngFor="let sale of sales" >
         <td class="col-6 text-start">
-          <h5>Mark Ohai</h5>
-          <p>555-555-0000</p>
+          <h5>{{sale.user.fullname}}</h5>
+          <p>{{sale.user.phone}}</p>
+        </td>
+
+        <td>
+          <h5>${{sale.amount}}</h5>
         </td>
         <td>
-          <h5>$37.42</h5>
-        </td>
-        <td>
-          <h5>3</h5>
+          <h5>{{sale.tickets}}</h5>
         </td>
       </tr>
-      <tr>
+      <!-- <tr>
         <td class="text-start">
           <h5>Mark Ohai</h5>
           <p>555-555-0000</p>
@@ -43,7 +44,7 @@
         <td>
           <h5>3</h5>
         </td>
-      </tr>
+      </tr> -->
     </tbody>
     <tfoot></tfoot>
   </table>

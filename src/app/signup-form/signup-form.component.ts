@@ -12,8 +12,6 @@ export class SignupFormComponent implements OnInit {
 
   SignupFormData: FormGroup;
 
-    public myAngularxQrCode: string;
-
   constructor(private builder: FormBuilder, private userService: UserService) {
     this.SignupFormData = this.builder.group({
       fullname: new FormControl('', [Validators.required]),
@@ -26,11 +24,9 @@ export class SignupFormComponent implements OnInit {
 
       })
 
-      this.myAngularxQrCode = ''
-
-
 
    }
+
 
    addUser(form: User): void {
     console.log('inside addUser', form);
@@ -39,7 +35,9 @@ export class SignupFormComponent implements OnInit {
 const myObserver = {
   next: (user: User) => console.log('Observer got a next value: ' + user),
   error: (err: Error) => console.error('Observer got an error: ' + err.message),
-  complete: () => console.log('Observer got a complete notification'),
+  complete: () => {
+   this.SignupFormData.reset();
+  },
 };
 
 
@@ -50,13 +48,7 @@ const myObserver = {
 
 
    onSubmit(data: any) {
-    // this.myAngularxQrCode = data.email;
     this.addUser(data);
-
-
-
-
-    // console.log(data.email)
    }
 
   ngOnInit(): void {

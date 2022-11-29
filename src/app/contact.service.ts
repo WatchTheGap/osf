@@ -2,22 +2,22 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { environment } from '../environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContactService {
 
-  private api='https://mailthis.to/sara@snbasile.com'
 
   constructor(private http:HttpClient) { }
 
     //TODO: Remove console logs
 
-
   ContactUs(input: any) {
-
-    return this.http.post(this.api, input, {responseType: 'text'}).subscribe(data => console.log(data));
-
+    console.log('inside contact us service', input);
+    const sendContactUrl = environment.baseUrl + 'contact-team';
+    return this.http.post(sendContactUrl, input);
   }
 }

@@ -1,4 +1,4 @@
 <div class="fixed-width">
   <router-outlet></router-outlet>
-  <app-footer *ngIf="this.location.path() !=='/scanner'"></app-footer>
+  <app-footer *ngIf="!(hasRoute('vendor'))"></app-footer>
 </div>

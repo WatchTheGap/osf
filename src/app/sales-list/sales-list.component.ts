@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Sale } from '../sale';
+import { Vendor } from '../vendor';
+import { SaleService } from '../sale.service';
 
 @Component({
   selector: 'app-sales-list',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SalesListComponent implements OnInit {
 
-  constructor() { }
+  @Input() vendor: any;
+
+  sales: Sale[] = []
+
+  constructor(private saleService: SaleService) { }
+
+  getSalesByVendor(id:any) {
+    this.saleService.getSalesByVendor(id).subscribe(
+      sales => {
+        this.sales = sales;
+        console.log(sales)
+      }
+    )
+  }
 
   ngOnInit(): void {
+    this.getSalesByVendor(this.vendor.id);
   }
 
 }

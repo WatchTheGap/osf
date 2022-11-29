@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,17 @@ import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common'
 export class AppComponent {
   title = 'osf';
 
-  constructor(public location: Location) { }
+  constructor(public location: Location, private router: Router) { }
+
+    /**
+   * Check if the router url contains the specified route
+   *
+   * @param {string} route
+   * @returns
+   * @memberof AppComponent
+   */
+     hasRoute(route: string) {
+      return this.router.url.includes(route);
+    }
 
 }
