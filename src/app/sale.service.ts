@@ -22,4 +22,9 @@ export class SaleService {
     const getSalesUrl = environment.baseUrl + '/sales?vendor_id=' + id;
      return this.http.get<Sale[]>(getSalesUrl);
    }
+
+   getSales(): Observable<Sale[]> {
+    const getSalesUrl = environment.baseUrl + '/sales';
+     return this.http.get<Sale[]>(getSalesUrl);
+   }
 }

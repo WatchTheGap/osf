@@ -30,6 +30,7 @@ import { VendorListComponent } from './vendor-list/vendor-list.component';
 import { VendorDetailComponent } from './vendor-detail/vendor-detail.component';
 import * as bootstrap from "bootstrap";
 import { SumPipe } from './sum.pipe';
+import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { SumPipe } from './sum.pipe';
     EventComponent,
     VendorListComponent,
     VendorDetailComponent,
-    SumPipe
+    SumPipe,
+    AdminComponent
     ],
   imports: [
     BrowserModule,

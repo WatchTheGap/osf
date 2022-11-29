@@ -11,12 +11,21 @@ import { SaleService } from '../sale.service';
 export class SalesListComponent implements OnInit {
 
   @Input() vendor: any;
+  @Input() admin: any;
 
   sales: Sale[] = []
 
   total: number = 0;
 
   constructor(private saleService: SaleService) { }
+
+  getSales() {
+    this.saleService.getSales().subscribe(
+      sales => {
+        this.sales = sales;
+      }
+    )
+  }
 
   getSalesByVendor(id:any) {
     this.saleService.getSalesByVendor(id).subscribe(
@@ -26,8 +35,15 @@ export class SalesListComponent implements OnInit {
     )
   }
 
+
   ngOnInit(): void {
-    this.getSalesByVendor(this.vendor.id);
+
+    if (this.admin) {
+      this.getSales();
+    }
+    else {
+      this.getSalesByVendor(this.vendor.id);
+    }
   }
 
 }

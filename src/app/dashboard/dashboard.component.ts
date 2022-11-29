@@ -1,5 +1,9 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Vendor } from '../vendor';
+import { Sale } from '../sale';
+import { User } from '../user';
+import { UserService } from '../user.service';
+import { SaleService } from '../sale.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,37 +13,46 @@ import { Vendor } from '../vendor';
 export class DashboardComponent implements OnChanges {
 
   @Input() vendor: any;
+  @Input() admin: any;
 
-  sales_total: number = 0;
-  tickets_total: number = 0;
+  sales: Sale[]=[];
+  set3: any = [];
+  user: User | undefined;
 
-
-  // TODO: THIS NEEDS TO ACCESS THE **AMOUNT** VALUES FOR EACH SALE AND ADD THEM TO THE TOTAL
-  totalSales(sales:any) {
-    if (this.vendor.sales) {
-      let total: number;
-      sales = this.vendor.sales;
-      sales.forEach(function(e:number) {
-        total = e + total;
-        console.log(total);
-      });
-      total = this.sales_total;
-      console.log(this.sales_total);
-    }
-    else {
-       console.log(this.sales_total)
-    }
+  constructor(private saleService: SaleService, private userService: UserService) { }
 
 
+
+  getAllTickets() {
+    console.log('inside getAllTickets');
+        // Create observer object
+    const myObserver = {
+      next: (sales: Sale[]) => {
+      this.sales = sales;
+      console.log(sales);
+    },
+      error: (err: Error) => console.error('Observer got an error: ', err.message),
+    complete: () => {this.processTickets()}
+  };
+    this.saleService.getSales().subscribe(myObserver);
   }
 
-  constructor() { }
+  processTickets() {
+    let   set1: any = [];
+
+    this.sales.forEach(function(e) {
+      let set2 = Array(e.tickets).fill([e.user_id]);
+      set1.push(set2);
+  });
+  let flatty = set1.flat();
+  let chosen = Math.floor(Math.random() * flatty.length);
+  console.log(flatty, flatty.length, chosen);
+  this.userService.getUserByID(chosen).subscribe(user => {this.user = user; console.log(user)})
+  }
+
 
   ngOnChanges() {
-    if (this.vendor) {
-      console.log(this.vendor);
-      this.totalSales(this.vendor.sales);
-    }
+
   }
 
   ngOnInit(): void {

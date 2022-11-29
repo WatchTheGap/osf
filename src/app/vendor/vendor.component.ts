@@ -12,19 +12,21 @@ export class VendorComponent implements OnInit {
 
 vendor: Vendor | undefined;
 
+isAdmin: boolean = false;
+
   constructor(public vendorService:VendorService,private route: ActivatedRoute,
     ) { }
 
     ngOnInit() {
       this.route.params.subscribe(params => {
       const id = +params['id'];
-      console.log(id);
-      this.vendorService.getVendor(id).subscribe(
-        vendor => {
-          this.vendor = vendor;
-          console.log("vendor component " + vendor)
+        if (id) {
+          this.vendorService.getVendor(id).subscribe(
+            vendor => {
+              this.vendor = vendor;
+            }
+          );
         }
-      );;
-   });
+       });
  }
 }

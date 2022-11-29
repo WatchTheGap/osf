@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddSaleComponent } from './add-sale/add-sale.component';
+import { AdminComponent } from './admin/admin.component';
 import { CreateComponent } from './create/create.component';
 import { EventComponent } from './event/event.component';
 import { HomeComponent } from './home/home.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'vendor/:id', component: VendorComponent},
   { path: 'vendor/:vendor_id/addsale/:user_id', component: AddSaleComponent},
   { path: 'scanner/:id', component: ScannerComponent},
+  { path: 'admin', component: AdminComponent},
 
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 

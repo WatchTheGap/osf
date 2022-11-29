@@ -1,9 +1,12 @@
 <div *ngIf="vendor" class="dash-body p-4">
   <a href="/scanner/{{vendor.id}}" class="btn col-12" type="button">Add sale</a>
 
-  <!-- <app-scanner></app-scanner> -->
-
-
 
   <app-sales-list [vendor]="vendor"></app-sales-list>
+</div>
+
+<div *ngIf="admin" class="dash-body p-4">
+  <button class="btn col-12" (click)="getAllTickets()">Generate winner</button>
+  <app-sales-list [admin]="admin"></app-sales-list>
+
 </div>

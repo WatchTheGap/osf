@@ -5,7 +5,6 @@ export class Vendor {
   instagram: string;
   thumbnail: string;
   desc: string;
-  password: string;
   phone: string;
   shopname: string;
 
@@ -15,7 +14,6 @@ export class Vendor {
               instagram: string,
               thumbnail: string,
               desc: string,
-              password: string,
               phone: string,
               shopname: string) {
     this.id = id;
@@ -24,7 +22,6 @@ export class Vendor {
     this.instagram = instagram;
     this.thumbnail = thumbnail;
     this.desc = desc;
-    this.password = password;
     this.phone = phone;
     this.shopname = shopname;
   }
