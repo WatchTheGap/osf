@@ -46,8 +46,9 @@ export class DashboardComponent implements OnChanges {
   });
   let flatty = set1.flat();
   let chosen = Math.floor(Math.random() * flatty.length);
-  console.log(flatty, flatty.length, chosen);
-  this.userService.getUserByID(chosen).subscribe(user => {this.user = user; console.log(user)})
+  let winnerID = flatty[chosen];
+  //user_id is always in the first index of the chosen array so we need to use winnerID[0]
+  this.userService.getUserByID(winnerID[0]).subscribe(user => {this.user = user; console.log(user)})
   }
 
 
