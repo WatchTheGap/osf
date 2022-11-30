@@ -7,9 +7,11 @@
     </div>
 
     <div class="form-group">
-      <input type="email" class="form-control" name="email" placeholder="Email" formControlName="email">
+      <input  type="email" class="form-control alert-anchor" name="email" placeholder="Email" formControlName="email">
     </div>
-
+    <ng-template #dupeWarn>
+      <p class="status-alert">This email is already in use.</p>
+    </ng-template>
     <div class="form-group">
       <input type="text" class="form-control" name="phone" placeholder="Phone Number" formControlName="phone">
     </div>
@@ -25,7 +27,7 @@
 				ngbDatepicker
 				#d="ngbDatepicker"
         [minDate]="{year: 1900, month:1, day: 1}"
-        [maxDate]="{year: 2038, month:1, day: 19}"
+        [maxDate]="{year: 2022, month:1, day: 1}"
 			/>
 		</div>
 
@@ -46,8 +48,6 @@
 
 
   </form>
-  <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#success">
-    test
-    </button> -->
+
   <app-success></app-success>
 </div>
