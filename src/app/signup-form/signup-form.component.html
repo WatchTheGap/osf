@@ -39,7 +39,9 @@
         I agree to the <a href="/terms">terms & conditions</a>
       </label>
     </div>
-    <button type="submit" class="btn col-12" [disabled]="!SignupFormData.valid" data-bs-toggle="modal" data-bs-target="#success">Create account</button>
+    <button type="submit" class="btn col-12" [disabled]="!SignupFormData.valid"  >Create account</button>
+
+    <div #successBtn data-bs-toggle="modal" data-bs-target="#success" class="hiddenbtn">Modal Trigger - Success</div>
 
 
 

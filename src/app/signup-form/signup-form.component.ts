@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import { User } from '../user';
 import { UserService } from '../user.service';
@@ -11,6 +11,9 @@ import { UserService } from '../user.service';
 export class SignupFormComponent implements OnInit {
 
   SignupFormData: FormGroup;
+
+  @ViewChild('successBtn') successBtn:any;
+
 
   constructor(private builder: FormBuilder, private userService: UserService) {
     this.SignupFormData = this.builder.group({
@@ -28,6 +31,15 @@ export class SignupFormComponent implements OnInit {
 
    }
 
+   triggerFalseClick() {
+    console.log('inside triggerFalseClick');
+    let inputElement: HTMLElement = this.successBtn.nativeElement as HTMLElement;
+    inputElement.click();
+  }
+
+  fixDate(d:any) {
+    d.dob = new Date(d.dob.year, d.dob.month-1, d.dob.day);
+  }
 
    addUser(form: User): void {
     console.log('inside addUser', form);
@@ -37,7 +49,8 @@ const myObserver = {
   next: (user: User) => console.log('Observer got a next value: ' + user),
   error: (err: Error) => console.error('Observer got an error: ' + err.message),
   complete: () => {
-   this.SignupFormData.reset();
+    this.triggerFalseClick()
+    this.SignupFormData.reset();
   },
 };
 
@@ -48,8 +61,18 @@ const myObserver = {
 
 
    onSubmit(data: any) {
-    data.dob = new Date(data.dob.year, data.dob.month-1, data.dob.day);
-    this.addUser(data);
+
+    if (typeof data.dob === 'object') {
+      console.log('its an object');
+      data.dob = new Date(data.dob.year, data.dob.month-1, data.dob.day);
+      console.log('after? ',data.dob, data);
+      let newdata = data;
+      this.addUser(newdata);
+    }
+    else {
+      console.log('not object?');
+    }
+    // this.addUser(data);
    }
 
   ngOnInit(): void {
