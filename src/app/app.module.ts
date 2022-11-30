@@ -28,9 +28,9 @@ import { AddSaleFormComponent } from './add-sale-form/add-sale-form.component';
 import { EventComponent } from './event/event.component';
 import { VendorListComponent } from './vendor-list/vendor-list.component';
 import { VendorDetailComponent } from './vendor-detail/vendor-detail.component';
-import * as bootstrap from "bootstrap";
 import { SumPipe } from './sum.pipe';
 import { AdminComponent } from './admin/admin.component';
+import { WinnersListComponent } from './winners-list/winners-list.component';
 
 
 @NgModule({
@@ -56,7 +56,8 @@ import { AdminComponent } from './admin/admin.component';
     VendorListComponent,
     VendorDetailComponent,
     SumPipe,
-    AdminComponent
+    AdminComponent,
+    WinnersListComponent
     ],
   imports: [
     BrowserModule,

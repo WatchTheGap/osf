@@ -12,6 +12,7 @@ export class SalesListComponent implements OnInit {
 
   @Input() vendor: any;
   @Input() admin: any;
+  @Input() winners: any;
 
   sales: Sale[] = []
 

@@ -1,0 +1,31 @@
+
+<div class="vendor-headers">
+
+  <h3>Totals</h3>
+  <h2>Sales: ${{sales | sum:'amount'}} | Tickets: {{sales | sum:'tickets'}}</h2>
+</div>
+
+<div class="winners-table p-3">
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th class=" col-9 text-start">Name</th>
+        <th class="col-3 text-end">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let winner of winners" >
+        <td class="col-6 text-start">
+          <h5>{{winner.fullname}}</h5>
+          <p>{{winner.phone}}</p>
+        </td>
+        <td>
+          <h5>{{winner.created_at | date: 'MM/dd/yyyy'}}</h5>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot></tfoot>
+  </table>
+
+</div>

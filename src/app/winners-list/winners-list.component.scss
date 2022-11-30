@@ -1,0 +1,46 @@
+@import 'src/_variables.scss';
+
+.winners-table {
+  background-color: $brand4;
+  border-radius: 8px;
+  max-height: 60vh;
+  overflow-y: scroll;
+  th {
+    color: $brand1;
+    border: none;
+  }
+  tr {
+    border-bottom: 1px solid #838383;
+  }
+  tfoot {
+    height: 3rem;
+  }
+  h5 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: black;
+  }
+
+  p {
+    margin: 0;
+    font-size: 9px;
+    color: #656565;
+  }
+
+}
+
+
+.vendor-headers {
+  padding: 2rem 0;
+}
+
+h2 {
+  font-size: 25px;
+  font-weight: 800;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
