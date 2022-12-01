@@ -39,6 +39,7 @@ testem.log
 src/assets/photos/vendor_originals
 src/assets/photos/originals
 src/assets/UpperLarimerMap1.png
+.firebase/
 
 # System files
 .DS_Store
