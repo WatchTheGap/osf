@@ -29,8 +29,13 @@ export class ContactFormComponent implements OnInit {
 
     console.log("Wheeeee!)", stuff)
 
+    const contactObs = {
+      next: (response: any) => console.log('Observer got a next value: ', response),
+      error: (err: Error) => console.error('Observer got an error: ', err.message),
+      complete: () => console.log('Observer got a complete notification'),
+    };
 
-    this.contact.ContactUs(stuff)
+    this.contact.ContactUs(stuff).subscribe(contactObs);
 
   }
 
