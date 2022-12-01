@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, Renderer2, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Renderer2, ElementRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { Vendor } from '../vendor';
 import { Sale } from '../sale';
 import { User } from '../user';
@@ -17,6 +17,7 @@ export class DashboardComponent implements OnChanges {
   @Input() admin: any;
 
   @ViewChild('winnerBtn') winnerBtn:any;
+  @ViewChild('drumroll') drumroll: any;
 
   sales: Sale[]=[];
   set3: any = [];
@@ -25,8 +26,7 @@ export class DashboardComponent implements OnChanges {
 
   constructor( private saleService: SaleService,
                private userService: UserService,
-               private modalService: NgbModal
-               ) { }
+               private vref:ViewContainerRef               ) { }
 
     triggerFalseClick() {
       console.log('inside triggerFalseClick');
@@ -51,13 +51,20 @@ export class DashboardComponent implements OnChanges {
 
   processTickets() {
 
+    this.vref.createEmbeddedView(this.drumroll);
+
+
     const winnerObs = {
-      next: (user: User) => { this.user = user;
+      next: (user: User) => { ; this.user = user;
         this.winners.push(user);
         console.log(user, this.winners);
       },
       error: (err: Error) => console.error('Observer got an error: ', err.message),
-      complete: () => { console.log('inside complete'); this.triggerFalseClick()}
+      complete: () => {
+        setTimeout(() => {
+          this.vref.remove(0);
+          this.triggerFalseClick();}, 5000)
+      }
 
     }
     let   set1: any = [];
@@ -75,6 +82,7 @@ export class DashboardComponent implements OnChanges {
 
 
   ngOnChanges() {
+
 
   }
 
