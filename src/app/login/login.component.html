@@ -2,10 +2,14 @@
   <div class=" has-nav d-flex flex-column justify-content-center">
     <a href="/home" class="nav-link"></a>
     <div class="title-text">
-      <h1>Vendor Login</h1>
+      <h1 *ngIf="(hasRoute('login'))">Vendor Login</h1>
+      <h1 *ngIf="(hasRoute('admin'))">Admin Login</h1>
+
     </div>
   </div>
 
-  <app-login-form></app-login-form>
+  <app-login-form *ngIf="(hasRoute('login'))"></app-login-form>
+  <app-login-form *ngIf="(hasRoute('admin'))"></app-login-form>
+
 
 </div>

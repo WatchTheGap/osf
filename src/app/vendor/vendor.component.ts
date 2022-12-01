@@ -14,10 +14,11 @@ vendor: Vendor | undefined;
 
 isAdmin: boolean = false;
 
-  constructor(public vendorService:VendorService,private route: ActivatedRoute,
+  constructor(public vendorService:VendorService,private route: ActivatedRoute
     ) { }
 
     ngOnInit() {
+
       this.route.params.subscribe(params => {
       const id = +params['id'];
         if (id) {

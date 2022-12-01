@@ -31,6 +31,7 @@ import { VendorDetailComponent } from './vendor-detail/vendor-detail.component';
 import { SumPipe } from './sum.pipe';
 import { AdminComponent } from './admin/admin.component';
 import { WinnersListComponent } from './winners-list/winners-list.component';
+import { AuthService } from './auth.service';
 
 
 @NgModule({
@@ -73,7 +74,8 @@ import { WinnersListComponent } from './winners-list/winners-list.component';
     ],
 
   providers: [
-    ContactService
+    ContactService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
