@@ -45,6 +45,9 @@ export class DashboardComponent implements OnChanges {
     }
     goToWinners() {
       this.router.navigate(['/admin/' + this.admin.id + '/raffle']);
+      if (this.hasRoute('raffle')) {
+        location.reload();
+      }
     }
 
 
@@ -102,8 +105,6 @@ export class DashboardComponent implements OnChanges {
     }
     else {
       this.vref.remove(0);
-
-      return console.log('no more eligible winners');
     }
 
   }

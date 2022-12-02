@@ -4,6 +4,7 @@ import { Vendor } from '../vendor';
 import { Admin } from '../admin';
 import { SaleService } from '../sale.service';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-winners-list',
@@ -21,7 +22,10 @@ sales: Sale[]=[];
 id: any;
 
 
-  constructor(private saleService: SaleService, private userService: UserService, private vref:ViewContainerRef,
+  constructor(private saleService: SaleService,
+              private userService: UserService,
+              private vref: ViewContainerRef,
+              public router: Router
     ) { }
 
 
@@ -43,12 +47,24 @@ id: any;
   }
 
   deleteWinner(id:any) {
-    this.userService.removeWinner(id).subscribe()
+
+    const delObs = {
+      next: (response: any) => {},
+      error: (err: Error) => {},
+    complete: () => {
+      location.reload();
+    }
+  };
+
+
+    this.userService.removeWinner(id).subscribe(delObs);
     this.closeConfirm();
+
   }
 
   ngOnInit(): void {
     this.getSales();
   }
+
 
 }
