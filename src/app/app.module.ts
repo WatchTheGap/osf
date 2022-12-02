@@ -32,6 +32,8 @@ import { SumPipe } from './sum.pipe';
 import { AdminComponent } from './admin/admin.component';
 import { WinnersListComponent } from './winners-list/winners-list.component';
 import { AuthService } from './auth.service';
+import { LocationStrategy, HashLocationStrategy} from '@angular/common';
+
 
 
 @NgModule({
@@ -75,7 +77,8 @@ import { AuthService } from './auth.service';
 
   providers: [
     ContactService,
-    AuthService
+    AuthService,
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]
 })
