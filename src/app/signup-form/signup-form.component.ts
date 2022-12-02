@@ -13,22 +13,18 @@ export class SignupFormComponent implements OnInit {
   SignupFormData: FormGroup;
 
   @ViewChild('successBtn') successBtn:any;
-
   @ViewChild('dupeWarn', { read: TemplateRef }) dupeWarn:any;
   @ViewChild('emailInvalid', { read: TemplateRef }) emailInvalid:any;
 
-
-
-
-  constructor(private builder: FormBuilder, private userService: UserService, private vref:ViewContainerRef) {
+  constructor(private builder: FormBuilder,
+              private userService: UserService,
+              private vref:ViewContainerRef) {
     this.SignupFormData = this.builder.group({
       fullname: new FormControl('', [Validators.required]),
       email: new FormControl('', [
           Validators.required,
           Validators.email
         ]),
-      //add Validators.pattern(/\/\/putRegexInHere/\/\/)
-      //validators for phone
       phone: new FormControl('', [
         Validators.required,
         Validators.pattern("^[0-9]*$"),
@@ -38,13 +34,10 @@ export class SignupFormComponent implements OnInit {
       dob: new FormControl('', [Validators.required]),
       instagram: new FormControl(''),
       terms: [false, Validators.requiredTrue]
-
       })
-
-
    }
 
-   triggerFalseClick() {
+  triggerFalseClick() {
     let inputElement: HTMLElement = this.successBtn.nativeElement as HTMLElement;
     inputElement.click();
   }
@@ -53,32 +46,25 @@ export class SignupFormComponent implements OnInit {
     d.dob = new Date(d.dob.year, d.dob.month-1, d.dob.day);
   }
 
-   addUser(form: User): void {
+  addUser(form: User): void {
     if (form.email.includes('+')) {
       this.vref.createEmbeddedView(this.emailInvalid);
       return;
     }
-    console.log('inside addUser', form);
 
-    // Create observer object
-const myObserver = {
-  next: (user: User) => console.log('Observer got a next value: ' + user),
-  error: (err: any) => {
-    if (err.status === 422) {
-      this.vref.createEmbeddedView(this.dupeWarn);
-
-    }
-    console.error('status', err.status);
-  },
-  complete: () => {
-    this.triggerFalseClick()
-    this.SignupFormData.reset();
-  },
-};
-
-
-      this.userService.addUser(form)
-        .subscribe(myObserver)
+    const myObserver = {
+      next: (user: User) => {},
+      error: (err: any) => {
+        if (err.status === 422) {
+          this.vref.createEmbeddedView(this.dupeWarn);
+        }
+      },
+      complete: () => {
+        this.triggerFalseClick()
+        this.SignupFormData.reset();
+      },
+    };
+      this.userService.addUser(form).subscribe(myObserver)
     }
 
 
@@ -91,7 +77,6 @@ const myObserver = {
     }
     else {
     }
-    // this.addUser(data);
    }
 
   ngOnInit(): void {

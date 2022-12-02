@@ -21,10 +21,6 @@ export class AddSaleComponent implements OnInit {
     this.user_id = this.route.snapshot.paramMap.get('user_id');
     this.vendor_id = this.route.snapshot.paramMap.get('vendor_id');
     this.userService.getUserByID(this.user_id).subscribe(user => {this.user = user});
-
-    console.log('id1 ', this.user_id)
-    console.log('id2 ', this.vendor_id)
-
  };
 }
 

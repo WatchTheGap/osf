@@ -29,21 +29,17 @@ export class DashboardComponent implements OnChanges {
                private vref:ViewContainerRef               ) { }
 
     triggerFalseClick() {
-      console.log('inside triggerFalseClick');
       let inputElement: HTMLElement = this.winnerBtn.nativeElement as HTMLElement;
       inputElement.click();
     }
 
 
   getAllTickets() {
-    console.log('inside getAllTickets');
-        // Create observer object
     const myObserver = {
       next: (sales: Sale[]) => {
       this.sales = sales;
-      console.log(sales);
     },
-      error: (err: Error) => console.error('Observer got an error: ', err.message),
+      error: (err: Error) => {},
     complete: () => {this.processTickets()}
   };
     this.saleService.getSales().subscribe(myObserver);
@@ -53,19 +49,16 @@ export class DashboardComponent implements OnChanges {
 
     this.vref.createEmbeddedView(this.drumroll);
 
-
     const winnerObs = {
       next: (user: User) => { ; this.user = user;
         this.winners.push(user);
-        console.log(user, this.winners);
       },
-      error: (err: Error) => console.error('Observer got an error: ', err.message),
+      error: (err: Error) => {},
       complete: () => {
         setTimeout(() => {
           this.vref.remove(0);
           this.triggerFalseClick();}, 5000)
       }
-
     }
     let   set1: any = [];
 
@@ -80,9 +73,7 @@ export class DashboardComponent implements OnChanges {
   this.userService.getUserByID(winnerID[0]).subscribe(winnerObs);
   }
 
-
   ngOnChanges() {
-
 
   }
 

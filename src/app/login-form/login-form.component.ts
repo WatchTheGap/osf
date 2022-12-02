@@ -18,7 +18,6 @@ export class LoginFormComponent implements OnInit {
 
   @ViewChild('incorrect', { read: TemplateRef }) incorrect:any;
 
-
   constructor(
     private router: Router,
     private builder: FormBuilder,
@@ -31,58 +30,44 @@ export class LoginFormComponent implements OnInit {
       })
   }
 
-
-
   getVendor(email:string, password:string) {
-          // Create observer object
-const vendorObs = {
-  next: (vendor: Vendor) => { if (vendor) {
-    localStorage.setItem('SessionUser',vendor.id.toString());
-    this.router.navigate(['/vendor/' + vendor.id]);
-  }
-  else {
-    this.vref.createEmbeddedView(this.incorrect);
-  }
-
-  },
-  // console.log('Observer got a next value: ' + vendor.instagram),
-error: (err: Error) => { console.log(err);
-},
-  complete: () => {console.log('Observer got a complete notification')},
-};
+    const vendorObs = {
+      next: (vendor: Vendor) => { if (vendor) {
+       localStorage.setItem('SessionUser',vendor.id.toString());
+        this.router.navigate(['/vendor/' + vendor.id]);
+        }
+        else {
+          this.vref.createEmbeddedView(this.incorrect);
+        }
+     },
+      error: (err: Error) => { },
+      complete: () => {},
+    };
     this.vendorService.verifyVendor(email, password).subscribe(vendorObs);
-
   }
 
   getAdmin(email:string, password:string) {
-    // Create observer object
-const adminObs = {
-next: (admin: Admin) => {
-  localStorage.setItem('SessionUser',admin.id.toString());
-  this.router.navigate(['/admin/' + admin.id]);
-},
-// console.log('Observer got a next value: ' + vendor.instagram),
-error: (err: Error) => console.error('Observer got an error: ' + err.message),
-complete: () => console.log('Observer got a complete notification'),
-};
-this.adminService.verifyAdmin(email, password).subscribe(adminObs);
-
-}
+    const adminObs = {
+      next: (admin: Admin) => {
+        localStorage.setItem('SessionUser',admin.id.toString());
+        this.router.navigate(['/admin/' + admin.id]);
+      },
+      error: (err: Error) => {},
+      complete: () => {},
+    };
+    this.adminService.verifyAdmin(email, password).subscribe(adminObs);
+  }
 
   ngOnInit(): void {
   }
 
-  // TODO: remove logs, router needs to accept response from login service
   onSubmit(data: any) {
     if (this.router.url.includes('login')) {
-      this.getVendor(data.email, data.password)
+      this.getVendor(data.email, data.password);
     }
     else if (this.router.url.includes('admin')) {
-      this.getAdmin(data.email, data.password)
-
+      this.getAdmin(data.email, data.password);
     }
-    // this.router.navigate(['/vendor/']);
-
    }
 
 }

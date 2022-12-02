@@ -18,12 +18,8 @@ export class VendorListComponent implements OnInit {
     this.vendorService.getVendors().subscribe(
       vendors => {
         this.vendors = vendors;
-        console.log(vendors)
       }
     );
-    // console.log("in getVendors in component " + this.vendors);
-
-
   }
 
 

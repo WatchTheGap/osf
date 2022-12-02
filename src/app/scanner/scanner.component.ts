@@ -17,7 +17,6 @@ export class ScannerComponent implements OnInit {
   vendor: any;
 
   private scannerEnabled: boolean = true;
-  private information: string = "No QR Code Detected.";
 
 
   constructor( private userService: UserService,
@@ -29,11 +28,9 @@ export class ScannerComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       const id = +params['id'];
-      console.log(id);
       this.vendorService.getVendor(id).subscribe(
         vendor => {
           this.vendor = vendor;
-          console.log("scanner component ", vendor);
         }
       );
    });
@@ -41,15 +38,12 @@ export class ScannerComponent implements OnInit {
 
   public scanSuccessHandler($event: any) {
     this.scannerEnabled = false;
-    this.information = "processing...";
-    console.log("Hi", $event);
-
     const myObserver = {
       next: (user: User) => {
         this.router.navigate(['vendor/' + this.vendor.id + '/addsale/' + user.id]);
       },
-      error: (err: Error) => console.error('Observer got an error: ' + err.message),
-      complete: () => console.log('Observer got a complete notification'),
+      error: (err: Error) => {},
+      complete: () => {},
     };
     this.userService.getUser($event).subscribe(myObserver);
 
@@ -58,8 +52,5 @@ export class ScannerComponent implements OnInit {
 
   public enableScanner() {
     this.scannerEnabled = !this.scannerEnabled;
-    this.information = "No QR Code Detected";
-    console.log("enableScanner")
   }
-
 }

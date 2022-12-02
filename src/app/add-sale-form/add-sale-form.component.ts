@@ -18,9 +18,6 @@ export class AddSaleFormComponent implements OnInit {
 
   AddSaleFormData: FormGroup
 
-
-
-
   constructor(
     private router: Router,
     private builder: FormBuilder,
@@ -37,28 +34,21 @@ export class AddSaleFormComponent implements OnInit {
 
     form.user_id = this.user_id;
     form.vendor_id = this.vendor_id;
-    console.log('inside addSale', form);
 
-    // Create observer object
-const myObserver = {
-  next: (sale: Sale) => console.log('Observer got a next value: ', sale),
-  error: (err: Error) => console.error('Observer got an error: ', err.message),
-  complete: () => {  this.router.navigate(['/vendor/' + this.vendor_id]);
-},
-};
+    const myObserver = {
+      next: (sale: Sale) => {},
+      error: (err: Error) => {},
+      complete: () => {  this.router.navigate(['/vendor/' + this.vendor_id]);
+      },
+    };
 
+    this.saleService.addSale(form).subscribe(myObserver)
+  }
 
-      this.saleService.addSale(form)
-        .subscribe(myObserver)
-    }
   ngOnInit(): void {
   }
 
-
-    // TODO: remove logs, router needs to accept response from login service
     onSubmit(data: Sale) {
       this.addSale(data);
-      // this.router.navigate(['/vendor/:id']);
-
      }
 }
