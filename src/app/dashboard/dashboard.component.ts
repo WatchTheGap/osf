@@ -4,7 +4,6 @@ import { Sale } from '../sale';
 import { User } from '../user';
 import { UserService } from '../user.service';
 import { SaleService } from '../sale.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 
@@ -27,6 +26,9 @@ export class DashboardComponent implements OnChanges {
   set3: any = [];
   user: any;
   winners: User[]=[];
+  users: User[] = [];
+
+  win: any;
 
   constructor( private saleService: SaleService,
                private userService: UserService,
@@ -38,30 +40,35 @@ export class DashboardComponent implements OnChanges {
       let inputElement: HTMLElement = this.winnerBtn.nativeElement as HTMLElement;
       inputElement.click();
     }
+    hasRoute(route: string) {
+      return this.router.url.includes(route);
+    }
+    goToWinners() {
+      this.router.navigate(['/admin/' + this.admin.id + '/raffle']);
+    }
+
 
 
   getAllTickets() {
-    const myObserver = {
+    const getTixObs = {
       next: (sales: Sale[]) => {
       this.sales = sales;
+      console.log(this.sales);
     },
       error: (err: Error) => {},
     complete: () => {this.processTickets()}
   };
-    this.saleService.getSales().subscribe(myObserver);
+    this.saleService.getSales().subscribe(getTixObs);
   }
 
-  goToWinners() {
-    this.router.navigate(['/admin/' + this.admin.id + '/raffle']);
-  }
+
 
   processTickets() {
 
     this.vref.createEmbeddedView(this.drumroll);
 
-    const winnerObs = {
+    const userObs = {
       next: (user: User) => { ; this.user = user;
-        this.winners.push(user);
       },
       error: (err: Error) => {},
       complete: () => {
@@ -71,21 +78,56 @@ export class DashboardComponent implements OnChanges {
         }, 5000);
       }
     }
+
     let   set1: any = [];
 
     this.sales.forEach(function(e) {
-      let set2 = Array(e.tickets).fill([e.user_id]);
-      set1.push(set2);
-  });
-  let flatty = set1.flat();
-  let chosen = Math.floor(Math.random() * flatty.length);
-  let winnerID = flatty[chosen];
-  //user_id is always in the first index of the chosen array so we need to use winnerID[0]
-  this.userService.getUserByID(winnerID[0]).subscribe(winnerObs);
+
+      if (!e.user.winner) {
+        let set2 = Array(e.tickets).fill([e.user_id]);
+        set1.push(set2);
+      }
+
+
+    });
+
+    let flatty = set1.flat();
+    let chosen = Math.floor(Math.random() * flatty.length);
+    let winnerID = flatty[chosen];
+
+    if (flatty.length > 0) {
+    //user_id is always in the first index of the chosen array so we need to use winnerID[0]
+    this.userService.addWinner(winnerID[0]).subscribe();
+    this.userService.getUserByID(winnerID[0]).subscribe(userObs);
+    }
+    else {
+      this.vref.remove(0);
+
+      return console.log('no more eligible winners');
+    }
+
   }
 
-  hasRoute(route: string) {
-    return this.router.url.includes(route);
+  getAllWinners() {
+    const getAllObs = {
+      next: (users: User[]) => {
+      this.users = users;
+    },
+      error: (err: Error) => {},
+    complete: () => {this.sort(this.users)}
+  };
+
+    this.userService.getUsers().subscribe(getAllObs)
+  }
+
+  sort(u: User []) {
+    let winners = this.winners;
+    u.forEach(function(e) {
+      if (e.winner) {
+        winners.push(e);
+      }
+    })
+
   }
 
   ngOnChanges() {
@@ -93,6 +135,7 @@ export class DashboardComponent implements OnChanges {
   }
 
   ngOnInit(): void {
+    this.getAllWinners();
 
   }
 

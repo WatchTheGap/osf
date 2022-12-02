@@ -18,7 +18,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let winner of winners" >
+      <tr *ngFor="let winner of winners">
         <td class="col-6 text-start">
           <h5>{{winner.fullname}}</h5>
           <p>{{winner.phone}}</p>
@@ -26,9 +26,27 @@
         <td>
           <h5>{{winner.created_at | date: 'MM/dd/yyyy'}}</h5>
         </td>
+        <td class="trash">
+         <img (click)="confirmDelete(winner.id)" src="assets/trash3.svg" alt="trash icon" class="trash-icon"></td>
       </tr>
     </tbody>
     <tfoot></tfoot>
   </table>
 
 </div>
+
+<ng-template #confirm>
+  <div class="confirm-delete">
+    <div class="d-flex flex-column confirm-box">
+      <div>
+        <h2 class="">Remove winner?</h2>
+
+      </div>
+      <div>
+        <button id="confirmBtn" class="btn btn-conf" (click)="closeConfirm()">CONFIRM</button>
+        <button id="cancelBtn" class="btn btn-canc" (click)="deleteWinner(id)">CANCEL</button>
+      </div>
+    </div>
+
+  </div>
+</ng-template>

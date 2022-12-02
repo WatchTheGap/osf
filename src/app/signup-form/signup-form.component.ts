@@ -33,6 +33,7 @@ export class SignupFormComponent implements OnInit {
         ),
       dob: new FormControl('', [Validators.required]),
       instagram: new FormControl(''),
+      winner: false,
       terms: [false, Validators.requiredTrue]
       })
    }
