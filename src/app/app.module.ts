@@ -32,6 +32,9 @@ import { SumPipe } from './sum.pipe';
 import { AdminComponent } from './admin/admin.component';
 import { WinnersListComponent } from './winners-list/winners-list.component';
 import { AuthService } from './auth.service';
+import { RouterModule } from '@angular/router';
+import { OsfAuthGuard } from './osf-auth.guard';
+
 
 
 @NgModule({
@@ -67,8 +70,28 @@ import { AuthService } from './auth.service';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    ZXingScannerModule
+    ZXingScannerModule,
+    RouterModule.forRoot([
+
+  { path: 'home', component: HomeComponent},
+  { path: 'create', component: CreateComponent},
+  { path: 'terms', component: TermsComponent},
+  { path: 'event', component: EventComponent},
+  { path: 'login', component: LoginComponent},
+  { path: 'vendor/:id', component: VendorComponent, canActivate: [OsfAuthGuard]},
+  { path: 'vendor/:vendor_id/addsale/:user_id', component: AddSaleComponent, canActivate: [OsfAuthGuard]},
+  { path: 'scanner/:id', component: ScannerComponent},
+  { path: 'admin', component: LoginComponent},
+  { path: 'admin/:id', component: AdminComponent, canActivate: [OsfAuthGuard]},
+  { path: 'admin/:id/raffle', component: AdminComponent, canActivate: [OsfAuthGuard]},
+
+
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+
+  { path: '**', component: HomeComponent} //TODO: Probably should make a 404 page...
+    ])
     ],
+
     exports: [
       SumPipe
     ],
