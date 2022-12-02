@@ -9,11 +9,13 @@ import { LoginComponent } from './login/login.component';
 import { ScannerComponent } from './scanner/scanner.component';
 import { VendorComponent } from './vendor/vendor.component';
 import { OsfAuthGuard } from './osf-auth.guard';
+import { TermsComponent } from './terms/terms.component';
 
 const routes: Routes = [
 
   { path: 'home', component: HomeComponent},
   { path: 'create', component: CreateComponent},
+  { path: 'terms', component: TermsComponent},
   { path: 'event', component: EventComponent},
   { path: 'login', component: LoginComponent},
   { path: 'vendor/:id', component: VendorComponent, canActivate: [OsfAuthGuard]},
