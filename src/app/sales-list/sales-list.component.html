@@ -4,7 +4,9 @@
   <h2>Sales: ${{sales | sum:'amount'}} | Tickets: {{sales | sum:'tickets'}}</h2>
 </div>
 <div class="sales-table p-3">
-
+<div *ngIf="admin" class="admin-nav">
+  <a href="/admin/{{admin.id}}" class="active">Sales</a> <a href="/admin/{{admin.id}}/raffle">Winners</a>
+</div>
   <table class="table">
     <thead>
       <tr>

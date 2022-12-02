@@ -6,6 +6,9 @@
 </div>
 
 <div class="winners-table p-3">
+  <div *ngIf="admin" class="admin-nav">
+    <a href="/admin/{{admin.id}}">Sales</a> <a href="/admin/{{admin.id}}/raffle" class="active">Winners</a>
+  </div>
 
   <table class="table">
     <thead>

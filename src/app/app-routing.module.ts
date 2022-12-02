@@ -21,6 +21,8 @@ const routes: Routes = [
   { path: 'scanner/:id', component: ScannerComponent},
   { path: 'admin', component: LoginComponent},
   { path: 'admin/:id', component: AdminComponent, canActivate: [OsfAuthGuard]},
+  { path: 'admin/:id/raffle', component: AdminComponent, canActivate: [OsfAuthGuard]},
+
 
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 

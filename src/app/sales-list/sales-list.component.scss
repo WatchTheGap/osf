@@ -3,12 +3,13 @@
 .sales-table {
   background-color: $brand4;
   border-radius: 8px;
-  min-height: 30vh;
+  min-height: 50vh;
   max-height: 60vh;
   overflow-y: scroll;
   th {
     color: $brand1;
     border: none;
+    font-size: 12px;
   }
   tr {
     border-bottom: 1px solid #838383;
@@ -44,4 +45,18 @@ h2 {
 h3 {
   font-size: 20px;
   font-weight: 600;
+}
+
+.admin-nav {
+  a {
+    color: black;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 18px;
+    padding: 1rem;
+  }
+  a.active {
+    font-weight: 800;
+    text-decoration: underline;
+  }
 }

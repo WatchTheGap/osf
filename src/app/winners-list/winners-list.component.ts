@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Sale } from '../sale';
 import { Vendor } from '../vendor';
+import { Admin } from '../admin';
 import { SaleService } from '../sale.service';
 
 @Component({
@@ -11,8 +12,10 @@ import { SaleService } from '../sale.service';
 export class WinnersListComponent implements OnInit {
 
 @Input() winners: any;
+@Input() admin: any;
 
 sales: Sale[]=[];
+
 
   constructor(private saleService: SaleService) { }
 

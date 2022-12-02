@@ -7,7 +7,7 @@
 
 <div *ngIf="admin" class="dash-body p-4">
 
-    <div id="winnerModal" class="modal" tabindex="-1">
+    <div id="winnerModal" class="modal" tabindex="-1" (click)="goToWinners()">
       <div class="modal-dialog p-4">
         <div class="modal-content">
           <div class="modal-header">
@@ -34,7 +34,7 @@
   <button #winnerBtn data-bs-toggle="modal" data-bs-target="#winnerModal" class="hiddenbtn">Modal Trigger - Winner</button>
 
   <button class="btn col-12" (click)="getAllTickets()">Generate winner</button>
-  <app-sales-list [admin]="admin"></app-sales-list>
-  <app-winners-list [winners]="winners"></app-winners-list>
+  <app-sales-list *ngIf="!(hasRoute('raffle'))" [admin]="admin"></app-sales-list>
+  <app-winners-list *ngIf="hasRoute('raffle')" [winners]="winners" [admin]="admin"></app-winners-list>
 
 </div>
