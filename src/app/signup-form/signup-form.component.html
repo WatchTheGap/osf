@@ -23,7 +23,7 @@
     <div class="form-group">
       <input
       [ngClass]="{invalid: SignupFormData.controls['phone'].invalid && (SignupFormData.controls['phone'].dirty || SignupFormData.controls['phone'].touched)} "
-      type="text" class="form-control" name="phone" placeholder="Phone Number" formControlName="phone">
+      type="text" inputmode="numeric" class="form-control" name="phone" placeholder="Phone Number" formControlName="phone">
     </div>
 
     <div class="input-group" (click)="d.open()">

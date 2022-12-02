@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { Vendor } from '../vendor';
@@ -16,11 +16,15 @@ export class LoginFormComponent implements OnInit {
 
   LoginFormData: FormGroup
 
+  @ViewChild('incorrect', { read: TemplateRef }) incorrect:any;
+
+
   constructor(
     private router: Router,
     private builder: FormBuilder,
     public vendorService: VendorService,
-    public adminService: AdminService) {
+    public adminService: AdminService,
+    private vref:ViewContainerRef) {
     this.LoginFormData= this.builder.group({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required])
@@ -32,12 +36,18 @@ export class LoginFormComponent implements OnInit {
   getVendor(email:string, password:string) {
           // Create observer object
 const vendorObs = {
-  next: (vendor: Vendor) => {
+  next: (vendor: Vendor) => { if (vendor) {
     localStorage.setItem('SessionUser',vendor.id.toString());
     this.router.navigate(['/vendor/' + vendor.id]);
+  }
+  else {
+    this.vref.createEmbeddedView(this.incorrect);
+  }
+
   },
   // console.log('Observer got a next value: ' + vendor.instagram),
-  error: (err: Error) => console.error('Observer got an error: ' + err.message),
+error: (err: Error) => { console.log(err);
+},
   complete: () => {console.log('Observer got a complete notification')},
 };
     this.vendorService.verifyVendor(email, password).subscribe(vendorObs);

@@ -1,7 +1,7 @@
 <div class="bg d-flex flex-column justify-content-between">
   <div class=" has-nav d-flex flex-column justify-content-center">
     <a href="/home" class="nav-link"></a>
-    <div class="title-text">
+    <div class="title-text d-flex justify-content-center align-items-center">
       <h1 *ngIf="(hasRoute('login'))">Vendor Login</h1>
       <h1 *ngIf="(hasRoute('admin'))">Admin Login</h1>
 
@@ -13,3 +13,4 @@
 
 
 </div>
+<app-footer></app-footer>

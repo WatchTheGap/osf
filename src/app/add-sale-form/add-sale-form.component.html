@@ -3,11 +3,11 @@
   <form [formGroup]="AddSaleFormData" (ngSubmit)="onSubmit(AddSaleFormData.value)">
 
     <div class="form-group">
-      <input type="text" class="form-control" name="amount" placeholder="Sale amount" formControlName="amount">
+      <input type="text" inputmode="numeric" class="form-control" name="amount" placeholder="Sale amount" formControlName="amount">
     </div>
 
     <div class="form-group">
-      <input type="number" class="form-control" name="tickets" placeholder="Number of tickets" formControlName="tickets">
+      <input type="number" inputmode="numeric" class="form-control" name="tickets" placeholder="Number of tickets" formControlName="tickets">
     </div>
 
     <button type="submit" class="btn col-12" [disabled]="!AddSaleFormData.valid">Save</button>

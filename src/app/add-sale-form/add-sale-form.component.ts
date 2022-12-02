@@ -43,7 +43,8 @@ export class AddSaleFormComponent implements OnInit {
 const myObserver = {
   next: (sale: Sale) => console.log('Observer got a next value: ', sale),
   error: (err: Error) => console.error('Observer got an error: ', err.message),
-  complete: () => console.log('Observer got a complete notification'),
+  complete: () => {  this.router.navigate(['/vendor/' + this.vendor_id]);
+},
 };
 
 
