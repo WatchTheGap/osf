@@ -3,23 +3,35 @@
   <form [formGroup]="SignupFormData" (ngSubmit)="onSubmit(SignupFormData.value)">
 
     <div class="form-group">
-      <input type="text" class="form-control" name="fullname" placeholder="Name" formControlName="fullname">
+      <input
+      [ngClass]="{invalid: SignupFormData.controls['fullname'].invalid && (SignupFormData.controls['fullname'].dirty || SignupFormData.controls['fullname'].touched)} "
+      type="text" class="form-control" name="fullname" placeholder="Name" formControlName="fullname">
     </div>
 
     <div class="form-group">
-      <input  type="email" class="form-control alert-anchor" name="email" placeholder="Email" formControlName="email">
+      <input
+      [ngClass]="{invalid: SignupFormData.controls['email'].invalid && (SignupFormData.controls['email'].dirty || SignupFormData.controls['email'].touched)} "
+
+      type="email" class="form-control alert-anchor" name="email" placeholder="Email" formControlName="email">
     </div>
     <ng-template #dupeWarn>
       <p class="status-alert">This email is already in use.</p>
     </ng-template>
+    <ng-template #emailInvalid>
+      <p class="status-alert">Email may not contain a '+' due to the QR code.</p>
+    </ng-template>
     <div class="form-group">
-      <input type="text" class="form-control" name="phone" placeholder="Phone Number" formControlName="phone">
+      <input
+      [ngClass]="{invalid: SignupFormData.controls['phone'].invalid && (SignupFormData.controls['phone'].dirty || SignupFormData.controls['phone'].touched)} "
+      type="text" class="form-control" name="phone" placeholder="Phone Number" formControlName="phone">
     </div>
 
     <div class="input-group" (click)="d.open()">
 
       <!-- TODO: 'toggle' is wrong, closes calendar on each click (click)="d.toggle()-->
 			<input
+      [ngClass]="{invalid: SignupFormData.controls['dob'].invalid && (SignupFormData.controls['dob'].dirty || SignupFormData.controls['dob'].touched)} "
+
 				class="form-control"
 				placeholder="Date of Birth"
 				name="dob"
@@ -36,8 +48,11 @@
     </div>
 
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="terms" formControlName="terms">
-      <label class="form-check-label" for="terms">
+      <input
+      class="form-check-input" type="checkbox" value="" id="terms" formControlName="terms">
+      <label
+      [ngClass]="{invalid: SignupFormData.controls['terms'].invalid} "
+      class="form-check-label" for="terms">
         I agree to the <a href="/terms">terms & conditions</a>
       </label>
     </div>

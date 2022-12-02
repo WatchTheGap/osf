@@ -15,13 +15,18 @@ export class SignupFormComponent implements OnInit {
   @ViewChild('successBtn') successBtn:any;
 
   @ViewChild('dupeWarn', { read: TemplateRef }) dupeWarn:any;
+  @ViewChild('emailInvalid', { read: TemplateRef }) emailInvalid:any;
+
 
 
 
   constructor(private builder: FormBuilder, private userService: UserService, private vref:ViewContainerRef) {
     this.SignupFormData = this.builder.group({
       fullname: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.email]),
+      email: new FormControl('', [
+          Validators.required,
+          Validators.email
+        ]),
       //add Validators.pattern(/\/\/putRegexInHere/\/\/)
       //validators for phone
       phone: new FormControl('', [
@@ -49,6 +54,10 @@ export class SignupFormComponent implements OnInit {
   }
 
    addUser(form: User): void {
+    if (form.email.includes('+')) {
+      this.vref.createEmbeddedView(this.emailInvalid);
+      return;
+    }
     console.log('inside addUser', form);
 
     // Create observer object
