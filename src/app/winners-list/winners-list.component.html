@@ -21,7 +21,7 @@
       <tr *ngFor="let winner of winners">
         <td class="col-6 text-start">
           <h5>{{winner.fullname}}</h5>
-          <p>{{winner.phone}}</p>
+          <p>{{winner.phone | slice:0:3}}-{{winner.phone | slice:3:6}}-{{winner.phone | slice:6:10}}</p>
         </td>
         <td>
           <h5>{{winner.created_at | date: 'MM/dd/yyyy'}}</h5>

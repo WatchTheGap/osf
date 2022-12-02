@@ -19,7 +19,7 @@
       <tr *ngFor="let sale of sales" >
         <td class="col-6 text-start">
           <h5>{{sale.user.fullname}}</h5>
-          <p>{{sale.user.phone}}</p>
+          <p>{{sale.user.phone | slice:0:3}}-{{sale.user.phone | slice:3:6}}-{{sale.user.phone | slice:6:10}}</p>
         </td>
 
         <td>
