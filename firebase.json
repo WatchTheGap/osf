@@ -1,16 +1,16 @@
 {
-  "hosting": {
+"hosting": {
     "public": "/dist/osf",
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ],
-
     "ignore": [
-      "firebase.json",
-      "**/node_modules/**"
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+    ],
+    "rewrites": [
+        {
+            "source": "**",
+            "destination": "/index.html"
+        }
     ]
-  }
+}
 }
