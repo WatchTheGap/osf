@@ -52,6 +52,12 @@
     font-size: 14px;
     line-height: 1rem;
   }
+
+  .date-holder {
+    margin: 0;
+    font-size: 10px;
+    color: grey;
+  }
 }
 
 .logo {
@@ -90,17 +96,26 @@
     -webkit-animation:spin 4s linear infinite;
     -moz-animation:spin 4s linear infinite;
     animation:spin 4s linear infinite;
+  }
+  @-moz-keyframes spin {
+      100% { -moz-transform: rotate(360deg); }
+  }
+  @-webkit-keyframes spin {
+      100% { -webkit-transform: rotate(360deg); }
+  }
+  @keyframes spin {
+      100% {
+          -webkit-transform: rotate(360deg);
+          transform:rotate(360deg);
+      }
+  }
 }
-@-moz-keyframes spin {
-    100% { -moz-transform: rotate(360deg); }
-}
-@-webkit-keyframes spin {
-    100% { -webkit-transform: rotate(360deg); }
-}
-@keyframes spin {
-    100% {
-        -webkit-transform: rotate(360deg);
-        transform:rotate(360deg);
-    }
-}
+
+.done {
+  position: absolute;
+  top: 20vh;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: white;
 }

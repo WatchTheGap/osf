@@ -21,14 +21,15 @@ export class DashboardComponent implements OnChanges {
 
   @ViewChild('winnerBtn') winnerBtn:any;
   @ViewChild('drumroll') drumroll: any;
+  @ViewChild('done') done: any;
+
+
 
   sales: Sale[]=[];
   set3: any = [];
   user: any;
   winners: User[]=[];
   users: User[] = [];
-
-  win: any;
 
   constructor( private saleService: SaleService,
                private userService: UserService,
@@ -56,7 +57,6 @@ export class DashboardComponent implements OnChanges {
     const getTixObs = {
       next: (sales: Sale[]) => {
       this.sales = sales;
-      console.log(this.sales);
     },
       error: (err: Error) => {},
     complete: () => {this.processTickets()}
@@ -72,7 +72,6 @@ export class DashboardComponent implements OnChanges {
 
     const userObs = {
       next: (user: User) => { ; this.user = user;
-        console.log(user)
       },
       error: (err: Error) => {},
       complete: () => {
@@ -92,7 +91,6 @@ export class DashboardComponent implements OnChanges {
         set1.push(set2);
       }
 
-
     });
 
     let flatty = set1.flat();
@@ -106,6 +104,8 @@ export class DashboardComponent implements OnChanges {
     }
     else {
       this.vref.remove(0);
+      this.vref.createEmbeddedView(this.done);
+
     }
 
   }

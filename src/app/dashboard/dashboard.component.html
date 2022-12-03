@@ -19,7 +19,7 @@
               <h1 class="modal-title fs-5">{{user?.fullname}}!</h1>
               <div *ngIf="user">
                 <div *ngFor="let sale of user.sales">
-                  <p>time? {{sale.amount}}</p>
+                  <p class="date-holder">Sale {{sale.id}}: {{sale.created_at | date: 'h:mm a'}}</p>
                </div>
               </div>
 
@@ -40,7 +40,12 @@
   <button #winnerBtn data-bs-toggle="modal" data-bs-target="#winnerModal" class="hiddenbtn">Modal Trigger - Winner</button>
 
   <button class="btn col-12" (click)="getAllTickets()">Generate winner</button>
+
   <app-sales-list *ngIf="!(hasRoute('raffle'))" [admin]="admin"></app-sales-list>
   <app-winners-list *ngIf="hasRoute('raffle')" [winners]="winners" [admin]="admin"></app-winners-list>
 
 </div>
+
+<ng-template #done>
+  <p class="done">All users are winners!</p>
+</ng-template>
