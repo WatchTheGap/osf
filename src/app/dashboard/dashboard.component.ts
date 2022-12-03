@@ -72,6 +72,7 @@ export class DashboardComponent implements OnChanges {
 
     const userObs = {
       next: (user: User) => { ; this.user = user;
+        console.log(user)
       },
       error: (err: Error) => {},
       complete: () => {

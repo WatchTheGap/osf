@@ -6,9 +6,10 @@ export class User {
   dob: Date;
   instagram: string;
   winner: boolean;
+  sales: any;
 
   constructor(id: number, fullname: string, email: string,
-              phone: string, dob: Date, instagram: string, winner: boolean) {
+              phone: string, dob: Date, instagram: string, winner: boolean, sales: any) {
     this.id = id;
     this.fullname = fullname;
     this.email = email;
@@ -16,5 +17,6 @@ export class User {
     this.dob = dob;
     this.instagram = instagram;
     this.winner = winner;
+    this.sales = sales;
   }
 }

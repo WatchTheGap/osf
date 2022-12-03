@@ -17,6 +17,12 @@
               <img class="logo" src="/assets/OSF_simplified_logo_black.png" alt="Old Sol Fiesta Logo">
               <p>Congratulations:</p>
               <h1 class="modal-title fs-5">{{user?.fullname}}!</h1>
+              <div *ngIf="user">
+                <div *ngFor="let sale of user.sales">
+                  <p>time? {{sale.amount}}</p>
+               </div>
+              </div>
+
           </div>
           <div class="modal-footer"></div>
         </div>
